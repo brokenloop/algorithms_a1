@@ -5,10 +5,15 @@ public class Apartment extends Property {
     private int storeyNumber;
     private int numberOfBeds;
 
-    public Apartment(String ownerName, String postalAddress, int costPerDay, int storeyNumber) {
+
+    // -------- CONSTRUCTOR ---------
+    public Apartment(String ownerName, String postalAddress, int costPerDay, int storeyNumber, int numberOfBeds) {
         super(ownerName, postalAddress, costPerDay);
         this.storeyNumber = storeyNumber;
+        this.numberOfBeds = numberOfBeds;
     }
+
+    // -------- SETTERS AND GETTERS -----------
 
     public int getStoreyNumber() {
         return storeyNumber;

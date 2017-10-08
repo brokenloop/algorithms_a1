@@ -6,6 +6,9 @@ public class Main {
 
         PropertyManager manager = new PropertyManager();
         manager.fillInProperties();
+
+        manager.printAllProperties();
+
         int income = manager.calculateTotalIncome();
 
         System.out.println("Total income is " + income);

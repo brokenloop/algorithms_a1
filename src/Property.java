@@ -1,8 +1,9 @@
 /**
  * Created by danieljordan on 02/10/2017.
+ *
+ * This is an abstract class, to be extended by Apartment, House and Villa
  */
 
-import java.util.ArrayList;
 
 public abstract class Property {
     private int registerNumber;
@@ -11,9 +12,11 @@ public abstract class Property {
     private int costPerDay;
     private int totalRentalDays = 0;
 
-    // Stores number of properties, to help each property get given a unique register number.
+    // Incremented every time a property is created, allowing each property to have a unique
     private static int propertyCount = 0;
 
+
+    // -------- CONSTRUCTOR ---------
     public Property(String ownerName, String postalAddress, int costPerDay) {
 
         // Give new registerNumber to object, increment propertyCount
@@ -24,6 +27,9 @@ public abstract class Property {
         this.postalAddress = postalAddress;
         this.costPerDay = costPerDay;
     }
+
+
+    // -------- SETTERS AND GETTERS -----------
 
     public int getRegisterNumber() {
         return registerNumber;
@@ -65,12 +71,24 @@ public abstract class Property {
         this.totalRentalDays = totalRentalDays;
     }
 
+
     public void rentProperty(int rentalDays) {
         this.totalRentalDays += rentalDays;
     }
 
+
+
+    // -------------- REQUIRED METHODS -------------
+
+    // Calculates income from the cost of the property per day, and the total number of rental days
     public int calculateIncome() {
         int rentalIncome = this.costPerDay * this.totalRentalDays;
         return rentalIncome;
+    }
+
+    // Prints property type, property address, and property register number
+    public String toString() {
+        String propertyType = this.getClass().getName();
+        return ("Property Type: " + propertyType + ", Address: \"" + this.postalAddress + "\", Register Number: " + this.registerNumber);
     }
 }

@@ -7,7 +7,6 @@
  */
 
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 public class PropertyManager {
 
@@ -16,144 +15,74 @@ public class PropertyManager {
     private ArrayList<Villa> villaList = new ArrayList<Villa>();
 
 
-    public Apartment createApartment() {
-        String ownerName = JOptionPane.showInputDialog(null,
-                "Please enter owner name");
-        String postalAddress = JOptionPane.showInputDialog(null,
-                "Please enter postal address");
-        int costPerDay = Integer.parseInt(JOptionPane.showInputDialog(null,
-                "Please enter cost per day"));
-        int storeyNumber = Integer.parseInt(JOptionPane.showInputDialog(null,
-                "Please enter storey number"));
-
-        Apartment apartment = new Apartment(ownerName, postalAddress, costPerDay, storeyNumber);
-
-        return apartment;
-    }
-
-    public House createHouse() {
-        String ownerName = JOptionPane.showInputDialog(null,
-                "Please enter owner name");
-        String postalAddress = JOptionPane.showInputDialog(null,
-                "Please enter postal address");
-        int costPerDay = Integer.parseInt(JOptionPane.showInputDialog(null,
-                "Please enter cost per day"));
-        int numberOfStoreys = Integer.parseInt(JOptionPane.showInputDialog(null,
-                "Please enter number of storeys"));
-        int clearingFee = Integer.parseInt(JOptionPane.showInputDialog(null,
-                "Please enter clearing fee"));
-
-
-        House house = new House(ownerName, postalAddress, costPerDay, numberOfStoreys, clearingFee);
-
-        return house;
-    }
-
-    public Villa createVilla() {
-        String ownerName = JOptionPane.showInputDialog(null,
-                "Please enter owner name");
-        String postalAddress = JOptionPane.showInputDialog(null,
-                "Please enter postal address");
-        int costPerDay = Integer.parseInt(JOptionPane.showInputDialog(null,
-                "Please enter cost per day"));
-        int numberOfRooms = Integer.parseInt(JOptionPane.showInputDialog(null,
-                "Please enter number of rooms"));
-        int roomServiceCostPerDay = Integer.parseInt(JOptionPane.showInputDialog(null,
-                "Please enter room service cost per day"));
-        int luxuryTaxPerDay = Integer.parseInt(JOptionPane.showInputDialog(null,
-                "Please enter luxury tax per day"));
-
-        Villa villa = new Villa(ownerName, postalAddress, costPerDay, numberOfRooms, roomServiceCostPerDay,
-                luxuryTaxPerDay);
-
-        return villa;
-    }
-
-    public void fillInProperties2() {
+    // Populates arraylists with properties.
+    // Initially implemented with JOptionPane, but rewritten to allow for easier testing.
+    public void fillInProperties() {
 
         // Create Apartments
         Apartment apartment1 = new Apartment("Daniel Jordan", "1 Fake Street", 50,
-                1);
-        Apartment apartment2 = new Apartment("Eoghan Jordan", "2 Fake Street", 100,
-                2);
-        Apartment apartment3 = new Apartment("Michael Jordan", "3 Fake Street", 150,
-                3);
+                1, 2);
+        Apartment apartment2 = new Apartment("Eoghan Jordan", "2 Fake Street", 50,
+                2, 2);
+        Apartment apartment3 = new Apartment("Michael Jordan", "3 Fake Street", 50,
+                3, 2);
 
         //Create Houses
         House house1 = new House("Daniel Jordan", "11 Fake Street", 100,
                 1, 20);
-        House house2 = new House("Eoghan Jordan", "12 Fake Street", 150,
-                2, 30);
-        House house3 = new House("Michael Jordan", "13 Fake Street", 200,
-                3, 40);
+        House house2 = new House("Eoghan Jordan", "12 Fake Street", 100,
+                2, 20);
+        House house3 = new House("Michael Jordan", "13 Fake Street", 100,
+                3, 20);
 
         //Create Villas
         Villa villa1 = new Villa("Daniel Jordan", "111 Fake Street", 500,
                 10, 100,50);
-        Villa villa2 = new Villa("Eoghan Jordan", "112 Fake Street", 550,
+        Villa villa2 = new Villa("Eoghan Jordan", "112 Fake Street", 500,
                 11, 100, 50);
-        Villa villa3 = new Villa("Michael Jordan", "113 Fake Street", 600,
+        Villa villa3 = new Villa("Michael Jordan", "113 Fake Street", 500,
                 12, 100, 50);
 
-        // Add properties to arraylists
+        // Add apartments to arraylists
         apartmentList.add(apartment1);
         apartmentList.add(apartment2);
         apartmentList.add(apartment3);
+
+        // Add houses to arraylists
         houseList.add(house1);
         houseList.add(house2);
         houseList.add(house3);
+
+        // Add villas to arraylists
         villaList.add(villa1);
         villaList.add(villa2);
         villaList.add(villa3);
-    }
-
-    public void fillInProperties() {
-
-        int propertyNum = 1;
-
-        // Creating properties
-        for (int i = 0; i < propertyNum; i++) {
-            Apartment apartment = createApartment();
-            apartmentList.add(apartment);
-        }
-
-        for (int i = 0; i < propertyNum; i++) {
-            House house = createHouse();
-            houseList.add(house);
-        }
-
-        for (int i = 0; i < propertyNum; i++) {
-            Villa villa = createVilla();
-            villaList.add(villa);
-        }
 
 
-        // Filling properties with rental days
+        // Add rental days to each property
+        int rentalDaysNumber = 1;
+
         for (Property property : this.apartmentList) {
-            for (int i = 0; i < propertyNum; i++) {
-                int rentalDays = Integer.parseInt(JOptionPane.showInputDialog(null,
-                        "How many days would you like to rent the property for?"));
-                property.rentProperty(rentalDays);
+            for (int i = 0; i < 3; i++) {
+                property.rentProperty(rentalDaysNumber);
             }
         }
 
         for (Property property : this.houseList) {
-            for (int i = 0; i < propertyNum; i++) {
-                int rentalDays = Integer.parseInt(JOptionPane.showInputDialog(null,
-                        "How many days would you like to rent the property for?"));
-                property.rentProperty(rentalDays);
+            for (int i = 0; i < 3; i++) {
+                property.rentProperty(rentalDaysNumber);
             }
         }
 
         for (Property property : this.villaList) {
-            for (int i = 0; i < propertyNum; i++) {
-                int rentalDays = Integer.parseInt(JOptionPane.showInputDialog(null,
-                        "How many days would you like to rent the property for?"));
-                property.rentProperty(rentalDays);
+            for (int i = 0; i < 3; i++) {
+                property.rentProperty(rentalDaysNumber);
             }
         }
     }
 
+
+    // Calculates income from all properties
     public int calculateTotalIncome() {
         int totalIncome = 0;
 
@@ -170,6 +99,21 @@ public class PropertyManager {
         }
 
         return totalIncome;
+    }
+
+    // Prints contents of each array list
+    public void printAllProperties() {
+        for (Property property : this.apartmentList) {
+            System.out.println(property);
+        }
+
+        for (Property property : this.houseList) {
+            System.out.println(property);
+        }
+
+        for (Property property : this.villaList) {
+            System.out.println(property);
+        }
     }
 
 }

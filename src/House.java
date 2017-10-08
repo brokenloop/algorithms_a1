@@ -5,19 +5,14 @@ public class House extends Property{
     private int numberOfStoreys;
     private int clearingFee;
 
-//    public House(String ownerName, String postalAddress, int costPerDay, int numberOfStoreys,
-//                 int clearingFee) {
-//        super(ownerName, postalAddress, costPerDay);
-//        this.numberOfStoreys = numberOfStoreys;
-//        this.clearingFee = clearingFee;
-//    }
-
-
+    // -------- CONSTRUCTOR ---------
     public House(String ownerName, String postalAddress, int costPerDay, int numberOfStoreys, int clearingFee) {
         super(ownerName, postalAddress, costPerDay);
         this.numberOfStoreys = numberOfStoreys;
         this.clearingFee = clearingFee;
     }
+
+    // -------- SETTERS AND GETTERS -----------
 
     public int getNumberOfStoreys() {
         return numberOfStoreys;
@@ -34,6 +29,9 @@ public class House extends Property{
     public void setClearingFee(int clearingFee) {
         this.clearingFee = clearingFee;
     }
+
+
+    // -------------- REQUIRED METHODS -------------
 
     public int calculateIncome() {
         int rentalIncome = super.calculateIncome();

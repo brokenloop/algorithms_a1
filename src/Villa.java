@@ -6,6 +6,8 @@ public class Villa extends Property {
     private int roomServiceCostPerDay;
     private int luxuryTaxPerDay;
 
+
+    // -------- CONSTRUCTOR ---------
     public Villa(String ownerName, String postalAddress, int costPerDay, int numberOfRooms,
                  int roomServiceCostPerDay, int luxuryTaxPerDay) {
         super(ownerName, postalAddress, costPerDay);
@@ -13,6 +15,8 @@ public class Villa extends Property {
         this.roomServiceCostPerDay = roomServiceCostPerDay;
         this.luxuryTaxPerDay = luxuryTaxPerDay;
     }
+
+    // -------- SETTERS AND GETTERS -----------
 
     public int getNumberOfRooms() {
         return numberOfRooms;
@@ -37,6 +41,10 @@ public class Villa extends Property {
     public void setLuxuryTaxPerDay(int luxuryTaxPerDay) {
         this.luxuryTaxPerDay = luxuryTaxPerDay;
     }
+
+
+
+    // -------------- REQUIRED METHODS -------------
 
     public int calculateIncome() {
         int rentalIncome = super.calculateIncome();
